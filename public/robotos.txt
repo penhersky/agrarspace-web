@@ -1,0 +1,5 @@
+User-agent: * 
+Disallow: /_next/static/
+
+Host: https://sitename.com
+Sitemap: http://sitename.com/sitemap.xml
