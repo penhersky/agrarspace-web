@@ -30,6 +30,7 @@
   ],
   "rules": {
     "react/prop-types": "error",
+    "react/no-unstable-nested-components": "off",
     "react/jsx-fragments": "off",
     "react/jsx-props-no-spreading": "warn",
     "react/react-in-jsx-scope": "off",

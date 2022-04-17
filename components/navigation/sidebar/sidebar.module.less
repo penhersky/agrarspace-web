@@ -1,0 +1,127 @@
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: @local-background;
+  box-shadow: @box-shadow-base;
+  transition: linear @animation-splice-time;
+
+  .divider {
+    min-width: 220px;
+    width: 220px;
+    margin: 15px 00 15px 20px;
+  }
+
+  .content {
+    width: 260px;
+    max-height: 90vh;
+    overflow: auto;
+    transition: linear @animation-splice-time;
+
+    .logo {
+      margin: 20px 20px;
+      height: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: linear @animation-splice-time;
+
+      img {
+        max-width: 200px;
+        max-height: 100px;
+      }
+    }
+
+    .menu {
+      width: 100%;
+      height: max-content;
+
+      .item {
+        display: flex;
+        flex-flow: nowrap row;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 4px 0;
+        margin: 3px 0;
+        transition: linear @global-hover-time;
+        &:hover {
+          background-color: @global-hover-color;
+        }
+
+        .activeMarker {
+          height: 30px;
+          width: 5px;
+          background-color: @primary-color;
+          border-radius: 0 @border-radius-base @border-radius-base 0;
+          transition: linear @animation-splice-time;
+          transform: translate(-5px);
+        }
+
+        .itemContent {
+          width: 100%;
+          display: flex;
+          flex-flow: nowrap row;
+          justify-content: flex-start;
+          align-items: center;
+        }
+      }
+
+      .activeItem {
+        .activeMarker {
+          transform: translate(0px);
+        }
+      }
+    }
+  }
+
+  .icon {
+    margin: 0 15px;
+  }
+
+  .bottom {
+    width: 100%;
+    display: flex;
+    flex-flow: nowrap column;
+    align-items: flex-end;
+    height: 50px;
+
+    .viewType {
+      margin: 10px 15px;
+    }
+
+    .divider {
+      margin: 0 20px;
+    }
+  }
+}
+
+.fullView {
+  width: 260px;
+}
+
+.minimizeView {
+  overflow: hidden;
+  transform: translate(-200px);
+  position: fixed;
+
+  .content {
+    transform: translate(200px);
+    width: 260px;
+    .logo {
+      opacity: 0;
+    }
+
+    .divider {
+      width: 100%;
+      margin: 15px 0 15px 0;
+    }
+  }
+
+  .bottom {
+    .divider {
+      margin: 0;
+    }
+  }
+}
