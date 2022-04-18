@@ -3,21 +3,24 @@
   display: flex;
   flex-flow: nowrap column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   background-color: @local-background;
   box-shadow: @box-shadow-base;
+  clip-path: inset(0px -50px 0px 0px);
   transition: linear @animation-splice-time;
 
   .divider {
     min-width: 220px;
     width: 220px;
-    margin: 15px 00 15px 20px;
+    margin: 15px 0 15px 20px;
+    transition: linear @animation-splice-time;
   }
 
   .content {
     width: 260px;
     max-height: 90vh;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     transition: linear @animation-splice-time;
 
     .logo {
@@ -46,6 +49,7 @@
         padding: 4px 0;
         margin: 3px 0;
         transition: linear @global-hover-time;
+        width: 260px;
         &:hover {
           background-color: @global-hover-color;
         }
@@ -65,6 +69,8 @@
           flex-flow: nowrap row;
           justify-content: flex-start;
           align-items: center;
+          margin-left: 10px;
+          transition: linear @animation-splice-time;
         }
       }
 
@@ -77,7 +83,7 @@
   }
 
   .icon {
-    margin: 0 15px;
+    margin: 0 16px;
   }
 
   .bottom {
@@ -103,19 +109,28 @@
 
 .minimizeView {
   overflow: hidden;
-  transform: translate(-200px);
-  position: fixed;
+  width: 60px;
+  left: 10;
 
   .content {
-    transform: translate(200px);
-    width: 260px;
+    width: 60px;
     .logo {
+      transform: scale(0);
       opacity: 0;
     }
 
     .divider {
-      width: 100%;
-      margin: 15px 0 15px 0;
+      min-width: 40px;
+      width: 40px;
+      margin: 15px 0 15px 10px;
+    }
+
+    .menu {
+      .item {
+        .itemContent {
+          margin-left: 0px;
+        }
+      }
     }
   }
 

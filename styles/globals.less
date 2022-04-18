@@ -16,6 +16,17 @@ a {
   text-decoration: none;
 }
 
+.link {
+  &:hover {
+    color: @link-color;
+    cursor: pointer;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
+}
+
 .icons {
   color: @icon-color;
 }

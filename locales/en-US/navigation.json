@@ -8,5 +8,8 @@
   "calendar": "Calendar",
   "weather": "Weather",
   "contactUs": "Contact Us",
-  "help": "Help"
+  "help": "Help",
+
+  "cultureCatalog": "Cultures Catalog",
+  "globalStatistics": "Global Statistics"
 }

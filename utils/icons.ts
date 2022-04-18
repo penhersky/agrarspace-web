@@ -1,4 +1,7 @@
-export { CgOrganisation as OrganizationIcon } from "react-icons/cg";
+export {
+  CgMenuGridR as CatalogIcon,
+  CgOrganisation as OrganizationIcon,
+} from "react-icons/cg";
 export {
   MdOutlineKeyboardArrowLeft as ArrowLeft,
   MdOutlineKeyboardArrowRight as ArrowRight,
@@ -9,6 +12,7 @@ export {
   RiMessage2Line as ContactUsIcon,
   RiDashboardLine as DashboardIcon,
   RiQuestionMark as HelpIcon,
+  RiLineChartLine as LineChartIcon,
   RiRoadMapLine as MapIcon,
   RiMapLine as PlantationIcon,
   RiPlantLine as PlantIcon,

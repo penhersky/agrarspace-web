@@ -20,4 +20,6 @@ function configureStore(preloadedState: any) {
 
 const store = configureStore({});
 
+export type StateType = ReturnType<typeof rootReducer>;
+
 export default store;

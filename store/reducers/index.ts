@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
 
-const tempReducer = (state: any) => ({ ...state });
+import user from "./user";
 
-export default combineReducers({ tempReducer });
+export default combineReducers({ user });

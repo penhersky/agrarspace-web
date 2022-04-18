@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Calendar, Dashboard, Weather } from "../../components/modules";
-import { SideBar } from "../../components/navigation";
+import { AppHeader, SideBar } from "../../components/navigation";
 import { PageProvider } from "../../components/providers";
 import { OZ_ROUTES } from "../../constants/navigation";
 import getLocaleProps from "../../services/initialProps/onlyLocale.service";
@@ -27,7 +27,9 @@ const OrganizationDashboard: NextPage = () => {
                 name: "test",
               }}
             />
+
             <div className={styles.content}>
+              <AppHeader />
               <Routes>
                 <Route path={OZ_ROUTES.dashboard} element={<Dashboard />} />
                 <Route path={OZ_ROUTES.calendar} element={<Calendar />} />

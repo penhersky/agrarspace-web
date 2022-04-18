@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as Image } from "./image/Image";
+export { default as UserEmblem } from "./userEmblem/UserEmblem";
