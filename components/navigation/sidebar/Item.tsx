@@ -21,7 +21,7 @@ const Item: React.FC<IItem> = ({ Icon, children, to }) => (
     <div className={styles.activeMarker} />
     <div className={styles.itemContent}>
       <Icon className={styles.icon} size={24} />
-      <Typography>{children}</Typography>
+      <Typography.Text>{children}</Typography.Text>
     </div>
   </NavLink>
 );

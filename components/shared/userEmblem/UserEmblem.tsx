@@ -13,9 +13,9 @@ const UserEmblem: React.FC<IUserEmblem> = ({ user }) => (
     <Avatar size={27}>
       {user.firstName.substring(0, 1) + user.lastName.substring(0, 1)}
     </Avatar>
-    <Typography className={styles.name}>
+    <Typography.Title level={5} className={styles.name}>
       {user.firstName} {user.lastName}
-    </Typography>
+    </Typography.Title>
   </div>
 );
 

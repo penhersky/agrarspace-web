@@ -20,17 +20,17 @@ const AppHeader = () => {
         <Link href="/" passHref>
           <div className={clsx(styles.link, "link")}>
             <CatalogIcon />
-            <Typography className={styles.text}>
+            <Typography.Text className={styles.text}>
               {t("cultureCatalog")}
-            </Typography>
+            </Typography.Text>
           </div>
         </Link>
         <Link href="/" passHref>
           <div className={clsx(styles.link, "link")}>
             <LineChartIcon />
-            <Typography className={styles.text}>
+            <Typography.Text className={styles.text}>
               {t("globalStatistics")}
-            </Typography>
+            </Typography.Text>
           </div>
         </Link>
       </div>
