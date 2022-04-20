@@ -25,4 +25,10 @@ module.exports = withPlugins(plugins, {
   reactStrictMode: true,
   ignoreDuringBuilds: true,
   i18n,
+  env: {
+    MAIN_ENDPOINT_URL: process.env.MAIN_ENDPOINT_URL,
+    WEATHER_API_URL: process.env.WEATHER_API_URL,
+    WEATHER_API_KEY: process.env.WEATHER_API_KEY,
+    MAP_ACCESS_KEY: process.env.MAP_ACCESS_KEY,
+  },
 });

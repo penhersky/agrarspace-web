@@ -8,6 +8,7 @@ const Dashboard = () => {
   return (
     <ViewProvider>
       <div>Dashboard</div>
+
       <PieChart
         data={[
           { color: "green", value: 20 },

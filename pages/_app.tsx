@@ -6,7 +6,7 @@ import { appWithTranslation } from "next-i18next";
 import { IconContext } from "react-icons";
 import { Provider as StoreProvider } from "react-redux";
 
-import { AuthProvider } from "../components/providers";
+import { AuthProvider, PageLoadingProvider } from "../components/providers";
 import client from "../services/client";
 import store from "../store/store";
 
@@ -16,9 +16,11 @@ const App = ({ Component, pageProps }: AppProps) => (
   <ApolloProvider client={client}>
     <StoreProvider store={store}>
       <IconContext.Provider value={IconsStyle}>
-        <AuthProvider>
-          <Component {...pageProps} />
-        </AuthProvider>
+        <PageLoadingProvider>
+          <AuthProvider>
+            <Component {...pageProps} />
+          </AuthProvider>
+        </PageLoadingProvider>
       </IconContext.Provider>
     </StoreProvider>
   </ApolloProvider>

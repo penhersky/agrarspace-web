@@ -7,7 +7,9 @@ interface IViewProviderProps {
 }
 
 const ViewProvider: React.FC<IViewProviderProps> = ({ children }) => (
-  <div className={styles.view}>{children}</div>
+  <div className="scroll-area">
+    <div className={styles.container}>{children}</div>
+  </div>
 );
 
 export default ViewProvider;
