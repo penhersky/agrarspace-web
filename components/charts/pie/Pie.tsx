@@ -1,7 +1,7 @@
 import { arc as Arc, pie as Pie, PieArcDatum, select } from "d3";
 import React, { useLayoutEffect, useRef } from "react";
 
-import { IDataPie, IExtendFunctionality } from "../../../models/charts";
+import { IDataPie, IExtendFunctionality } from "../../../models/charts.model";
 
 interface IPieChartProps extends IExtendFunctionality {
   size?: number;

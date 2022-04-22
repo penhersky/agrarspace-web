@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/prefer-default-export
+import { encrypt } from "../utils/crypto";
+
 export const OZ_ROUTES = {
   dashboard: "/organization/dashboard",
   organization: "/organization/self",
@@ -14,4 +15,10 @@ export const OZ_ROUTES = {
 
   contactUs: "/organization/contactUs",
   help: "/organization/help",
+};
+
+export const AUTH = {
+  userSingIn: "/auth/sign_in",
+  userSingUp: "/auth/sign_up",
+  organizationLogin: (id: string) => `/auth/organization/${encrypt(id)}`,
 };

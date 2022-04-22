@@ -8,7 +8,7 @@ import {
 const { MAIN_ENDPOINT_URL } = process.env;
 
 const httpLink = new HttpLink({
-  uri: MAIN_ENDPOINT_URL,
+  uri: `${MAIN_ENDPOINT_URL}/graphql`,
 });
 
 const link = ApolloLink.from([httpLink]);

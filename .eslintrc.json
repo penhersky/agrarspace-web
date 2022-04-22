@@ -29,7 +29,7 @@
     }
   ],
   "rules": {
-    "react/prop-types": "error",
+    "react/prop-types": "off",
     "react/no-unstable-nested-components": "off",
     "react/jsx-fragments": "off",
     "react/jsx-no-useless-fragment": "warn",
