@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-// eslint-disable-next-line import/prefer-default-export
 export const SING_IN_TO_ORGANIZATION = gql`
   query SignInToOrganization(
     $data: SignInOrganization!
@@ -9,6 +8,33 @@ export const SING_IN_TO_ORGANIZATION = gql`
     signInToOrganization(data: $data, info: $info) {
       token
       expiresIn
+    }
+  }
+`;
+
+export const AUTHENTICATION = gql`
+  query Authenticate {
+    authenticate {
+      token
+      expiresIn
+      type
+      user {
+        id
+        role
+        email
+        firstName
+        lastName
+        phoneNumber
+        provider
+        createdAt
+      }
+      employee {
+        id
+        name
+        role
+        position
+        createdAt
+      }
     }
   }
 `;

@@ -1,18 +1,25 @@
-import { Typography } from "antd";
+import { Avatar, Typography } from "antd";
 import clsx from "clsx";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 
+import { UserTypes } from "../../../models/enums.model";
 import { StateType } from "../../../store/store";
 import { CatalogIcon, LineChartIcon } from "../../../utils/icons";
-import { UserEmblem } from "../../shared";
 import styles from "./app-header.module.less";
 
 const AppHeader = () => {
   const { t } = useTranslation("navigation");
-  const { user } = useSelector((state: StateType) => state.user);
+  const { user, employee, type } = useSelector(
+    (state: StateType) => state.user
+  );
+
+  const name = useMemo(() => {
+    if (type === UserTypes.Employee && employee) return employee.name;
+    return `${user?.firstName} ${user?.lastName}`;
+  }, [user, employee, type]);
 
   return (
     <div className={styles.header}>
@@ -35,7 +42,14 @@ const AppHeader = () => {
         </Link>
       </div>
       <div className={styles.side}>
-        {user ? <UserEmblem user={user} /> : null}
+        {user || employee ? (
+          <div className={styles.emblem}>
+            <Avatar size={27}>{name.substring(0, 1)}</Avatar>
+            <Typography.Title level={5} className={styles.name}>
+              {name}
+            </Typography.Title>
+          </div>
+        ) : null}
       </div>
     </div>
   );

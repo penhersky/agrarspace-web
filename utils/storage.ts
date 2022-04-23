@@ -1,3 +1,5 @@
+import { UserTypes } from "../models/auth.model";
+
 interface ITokenData {
   token: string;
   expiresIn?: string;
@@ -16,3 +18,8 @@ export const getTokenDate = (name: Tokens) => {
 
 export const setTokenDate = (name: Tokens, data: ITokenData) =>
   localStorage.setItem(name, JSON.stringify(data));
+
+export const setUserType = (type: UserTypes) =>
+  localStorage.setItem("userType", type);
+
+export const getUserType = () => localStorage.getItem("userType");

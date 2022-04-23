@@ -16,7 +16,7 @@ import getInitialProps from "../../../services/initialProps/singInOrganization.s
 import { SING_IN_TO_ORGANIZATION } from "../../../services/schemas/auth.schema";
 import styles from "../../../styles/auth.module.less";
 import { useDevice } from "../../../utils/device";
-import { setTokenDate } from "../../../utils/token";
+import { setTokenDate, setUserType } from "../../../utils/storage";
 
 const OrganizationLogin: NextPage<{ organizationId: string }> = ({
   organizationId,
@@ -56,10 +56,12 @@ const OrganizationLogin: NextPage<{ organizationId: string }> = ({
         token: data.signInToOrganization.token,
         expiresIn: data.signInToOrganization.expiresIn,
       });
+      setUserType(data.signInToOrganization.type);
       router.replace(OZ_ROUTES.dashboard);
     }
   }, [data, router]);
 
+  // TODO: create authorization
   return (
     <PageProvider>
       <main className={styles.container}>
