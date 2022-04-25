@@ -13,8 +13,8 @@ import store from "../store/store";
 const IconsStyle = { className: "icons", size: "26" };
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <ApolloProvider client={client}>
-    <StoreProvider store={store}>
+  <StoreProvider store={store}>
+    <ApolloProvider client={client}>
       <IconContext.Provider value={IconsStyle}>
         <PageLoadingProvider>
           <AuthProvider>
@@ -22,8 +22,8 @@ const App = ({ Component, pageProps }: AppProps) => (
           </AuthProvider>
         </PageLoadingProvider>
       </IconContext.Provider>
-    </StoreProvider>
-  </ApolloProvider>
+    </ApolloProvider>
+  </StoreProvider>
 );
 
 export default appWithTranslation(App);

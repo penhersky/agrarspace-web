@@ -6,6 +6,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+import store from "../store/store";
 import { getTokenDate } from "../utils/storage";
 
 const { MAIN_ENDPOINT_URL } = process.env;
@@ -25,7 +26,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      "x-token-session-x": "",
+      "x-token-session-x": store.getState().user.token ?? "",
       "x-token-permanent-x":
         deviceData?.expiresIn &&
         (deviceData?.expiresIn === "unlimited" ||

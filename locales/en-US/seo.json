@@ -3,5 +3,9 @@
     "description": "",
     "keywords": "word1, word2",
     "title": "Default Title"
+  },
+  "loading": {
+    "description": "",
+    "title": "Loading..."
   }
 }

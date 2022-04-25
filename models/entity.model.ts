@@ -27,6 +27,7 @@ export interface IOrganization<T = IUser> {
   name: String;
   owner: T;
   description: String;
+  confirmed: boolean;
   createdAt: String;
   updatedAt: String;
 }
