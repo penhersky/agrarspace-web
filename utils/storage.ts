@@ -1,4 +1,4 @@
-import { UserTypes } from "../models/auth.model";
+import { UserTypes } from "../models/enums.model";
 
 interface ITokenData {
   token: string;

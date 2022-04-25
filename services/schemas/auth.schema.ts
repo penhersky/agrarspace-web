@@ -33,6 +33,9 @@ export const AUTHENTICATION = gql`
         name
         role
         position
+        organization {
+          id
+        }
         createdAt
       }
     }

@@ -1,7 +1,6 @@
 import { Button, Card, Input } from "antd";
 import type { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 
 import { PageProvider } from "../components/providers";
 import styles from "../styles/pages/Home.module.less";
@@ -18,9 +17,6 @@ const Home: NextPage = () => (
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome</h1>
         <Button type="primary">Hello</Button>
-        <Button type="link">
-          <Link href="/organization/">Organization</Link>
-        </Button>
         <Card>Test</Card>
         <Input placeholder="test" />
       </main>

@@ -19,13 +19,18 @@ interface ISignInOrganizationData {
   password: string;
 }
 
+interface IOrganizationEmployee extends IEmployee {
+  organization: {
+    id: number;
+  };
+}
 export interface IAuthenticationResult {
   authenticate: {
     token: string;
     expiresIn: string;
     user: IUser;
     type: UserTypes;
-    employee: IEmployee;
+    employee: IOrganizationEmployee;
   };
 }
 

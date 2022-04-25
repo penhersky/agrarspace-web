@@ -3,14 +3,16 @@ import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { Calendar, Dashboard, Weather } from "../../components/modules";
-import { AppHeader, SideBar } from "../../components/navigation";
-import { PageProvider } from "../../components/providers";
-import { OZ_ROUTES } from "../../constants/navigation";
-import getLocaleProps from "../../services/initialProps/onlyLocale.service";
-import styles from "../../styles/pages/Organization.module.less";
+import { Calendar, Dashboard, Weather } from "../../../components/modules";
+import { AppHeader, SideBar } from "../../../components/navigation";
+import { PageProvider } from "../../../components/providers";
+import { OZ_PAGES } from "../../../constants/navigation";
+import useOrganizationNavigator from "../../../hooks/organizationNavigator.hook";
+import getLocaleProps from "../../../services/initialProps/onlyLocale.service";
+import styles from "../../../styles/pages/Organization.module.less";
 
 const OrganizationDashboard: NextPage = () => {
+  const { createPath } = useOrganizationNavigator();
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => setIsBrowser(true), []);
@@ -31,9 +33,18 @@ const OrganizationDashboard: NextPage = () => {
             <div className={styles.content}>
               <AppHeader />
               <Routes>
-                <Route path={OZ_ROUTES.dashboard} element={<Dashboard />} />
-                <Route path={OZ_ROUTES.calendar} element={<Calendar />} />
-                <Route path={OZ_ROUTES.weather} element={<Weather />} />
+                <Route
+                  path={createPath(OZ_PAGES.dashboard)}
+                  element={<Dashboard />}
+                />
+                <Route
+                  path={createPath(OZ_PAGES.calendar)}
+                  element={<Calendar />}
+                />
+                <Route
+                  path={createPath(OZ_PAGES.weather)}
+                  element={<Weather />}
+                />
                 <Route
                   path="*"
                   element={

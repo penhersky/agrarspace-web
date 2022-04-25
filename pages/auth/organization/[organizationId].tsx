@@ -7,7 +7,7 @@ import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 
 import { PageProvider } from "../../../components/providers";
-import { OZ_ROUTES } from "../../../constants/navigation";
+import useOzNavigator from "../../../hooks/organizationNavigator.hook";
 import {
   ISignInResultResult,
   ISingInOrganizationVariables,
@@ -23,6 +23,7 @@ const OrganizationLogin: NextPage<{ organizationId: string }> = ({
 }) => {
   const router = useRouter();
   const { getOs } = useDevice();
+  const { goToDashboard } = useOzNavigator();
   const { t } = useTranslation("auth");
 
   const [singIn, { loading, data, error }] = useLazyQuery<
@@ -52,16 +53,19 @@ const OrganizationLogin: NextPage<{ organizationId: string }> = ({
 
   useEffect(() => {
     if (data) {
+      const { asPath, pathname } = router.query;
       setTokenDate("device", {
         token: data.signInToOrganization.token,
         expiresIn: data.signInToOrganization.expiresIn,
       });
       setUserType(data.signInToOrganization.type);
-      router.replace(OZ_ROUTES.dashboard);
+      if (asPath && pathname)
+        router.replace(pathname as string, asPath as string);
+      else goToDashboard();
     }
-  }, [data, router]);
+  }, [data, router, goToDashboard]);
 
-  // TODO: create authorization
+  // TODO: create authorization template
   return (
     <PageProvider>
       <main className={styles.container}>

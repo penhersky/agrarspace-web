@@ -8,10 +8,10 @@ import { decrypt } from "../../utils/crypto";
 export default async ({
   locale,
   params,
-}: Locale & GetServerSidePropsContext<{ id: string }>) => {
+}: Locale & GetServerSidePropsContext<{ organizationId: string }>) => {
   try {
-    if (typeof params?.id !== "string") throw Error();
-    const id = decrypt(params.id);
+    if (typeof params?.organizationId !== "string") throw Error();
+    const id = decrypt(params.organizationId);
 
     /**
      * TODO: Add validation for organization

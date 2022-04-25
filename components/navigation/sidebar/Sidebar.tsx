@@ -3,7 +3,8 @@ import clsx from "clsx";
 import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 
-import { OZ_ROUTES } from "../../../constants/navigation";
+import { OZ_PAGES } from "../../../constants/navigation";
+import useOrganizationNavigator from "../../../hooks/organizationNavigator.hook";
 import {
   ArrowLeft,
   ArrowRight,
@@ -31,6 +32,7 @@ interface ISidebarProps {
 
 const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
   const { t } = useTranslation("navigation");
+  const { createPath } = useOrganizationNavigator();
   const [fullView, setFullView] = useState(true);
 
   const handleOnViewChanged = () => setFullView((prev) => !prev);
@@ -48,7 +50,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
         </div>
         <div className={styles.menu}>
           <Item
-            to={OZ_ROUTES.dashboard}
+            to={createPath(OZ_PAGES.dashboard)}
             Icon={({ className, size }) => (
               <DashboardIcon className={className} size={size} />
             )}
@@ -59,7 +61,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <OrganizationIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.organization}
+            to={createPath(OZ_PAGES.organization)}
           >
             {t("organization")}
           </Item>
@@ -68,7 +70,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <PlantationIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.plantations}
+            to={createPath(OZ_PAGES.plantations)}
           >
             {t("plantations")}
           </Item>
@@ -76,7 +78,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <PlantIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.yields}
+            to={createPath(OZ_PAGES.yields)}
           >
             {t("yields")}
           </Item>
@@ -84,7 +86,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <MapIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.globalMap}
+            to={createPath(OZ_PAGES.globalMap)}
           >
             {t("globalMap")}
           </Item>
@@ -93,7 +95,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <EmployeesIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.employees}
+            to={createPath(OZ_PAGES.employees)}
           >
             {t("employee")}
           </Item>
@@ -102,7 +104,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <CalendarIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.calendar}
+            to={createPath(OZ_PAGES.calendar)}
           >
             {t("calendar")}
           </Item>
@@ -110,7 +112,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <WeatherIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.weather}
+            to={createPath(OZ_PAGES.weather)}
           >
             {t("weather")}
           </Item>
@@ -119,7 +121,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <ContactUsIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.contactUs}
+            to={createPath(OZ_PAGES.contactUs)}
           >
             {t("contactUs")}
           </Item>
@@ -127,7 +129,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             Icon={({ className, size }) => (
               <HelpIcon className={className} size={size} />
             )}
-            to={OZ_ROUTES.help}
+            to={createPath(OZ_PAGES.help)}
           >
             {t("help")}
           </Item>
