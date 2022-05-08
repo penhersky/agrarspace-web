@@ -7,7 +7,8 @@ export const SING_IN_TO_ORGANIZATION = gql`
   ) {
     signInToOrganization(data: $data, info: $info) {
       token
-      expiresIn
+      rToken
+      type
     }
   }
 `;
@@ -15,8 +16,6 @@ export const SING_IN_TO_ORGANIZATION = gql`
 export const AUTHENTICATION = gql`
   query Authenticate {
     authenticate {
-      token
-      expiresIn
       type
       user {
         id
@@ -38,6 +37,15 @@ export const AUTHENTICATION = gql`
         }
         createdAt
       }
+    }
+  }
+`;
+
+export const REFRESH_TOKEN = `
+  query RefreshToken {
+    refreshToken {
+      rToken
+      token
     }
   }
 `;

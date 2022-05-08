@@ -9,7 +9,7 @@ export interface UserDeviceInfo {
 
 interface ISingIn {
   token: string;
-  expiresIn: string;
+  rToken: string;
   type: UserTypes;
 }
 
@@ -26,8 +26,6 @@ interface IOrganizationEmployee extends IEmployee {
 }
 export interface IAuthenticationResult {
   authenticate: {
-    token: string;
-    expiresIn: string;
     user: IUser;
     type: UserTypes;
     employee: IOrganizationEmployee;

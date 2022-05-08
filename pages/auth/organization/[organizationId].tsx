@@ -16,7 +16,7 @@ import getInitialProps from "../../../services/initialProps/singInOrganization.s
 import { SING_IN_TO_ORGANIZATION } from "../../../services/schemas/auth.schema";
 import styles from "../../../styles/auth.module.less";
 import { useDevice } from "../../../utils/device";
-import { setTokenDate, setUserType } from "../../../utils/storage";
+import { setTokenDate } from "../../../utils/storage";
 
 const OrganizationLogin: NextPage<{ organizationId: string }> = ({
   organizationId,
@@ -54,11 +54,8 @@ const OrganizationLogin: NextPage<{ organizationId: string }> = ({
   useEffect(() => {
     if (data) {
       const { asPath, pathname } = router.query;
-      setTokenDate("device", {
-        token: data.signInToOrganization.token,
-        expiresIn: data.signInToOrganization.expiresIn,
-      });
-      setUserType(data.signInToOrganization.type);
+      setTokenDate("rToken", data.signInToOrganization.rToken);
+      setTokenDate("session", data.signInToOrganization.token);
       if (asPath && pathname)
         router.replace(pathname as string, asPath as string);
       else goToDashboard();

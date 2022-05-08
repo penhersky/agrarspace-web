@@ -40,12 +40,36 @@
       flex-flow: nowrap row;
       justify-content: center;
       align-items: center;
-      padding: 3px;
+      padding: 3px 10px;
+      cursor: pointer;
+      transition: linear @global-hover-time;
+      height: 100%;
+      &:hover {
+        background-color: @global-hover-color;
+      }
 
       .name {
         margin: 0 10px;
         font-weight: 600;
       }
     }
+  }
+}
+
+.menu {
+  background-color: @local-background;
+  min-width: 200px;
+  .hat {
+    padding: 0 15px;
+    padding-top: 10px;
+    .name {
+      margin-top: 5px;
+    }
+  }
+
+  .divider {
+    margin: 0 10px;
+    width: 90%;
+    min-width: 20px;
   }
 }

@@ -32,6 +32,7 @@
     "react/prop-types": "off",
     "react/no-unstable-nested-components": "off",
     "react/jsx-fragments": "off",
+    "import/no-mutable-exports": "warn",
     "react/jsx-no-useless-fragment": "warn",
     "react/jsx-props-no-spreading": "warn",
     "react/react-in-jsx-scope": "off",

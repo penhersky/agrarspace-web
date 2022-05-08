@@ -1,25 +1,8 @@
-import { UserTypes } from "../models/enums.model";
+type Tokens = "admin" | "rToken" | "session";
 
-interface ITokenData {
-  token: string;
-  expiresIn?: string;
-}
+export const getTokenDate = (name: Tokens) => localStorage.getItem(name);
 
-type Tokens = "admin" | "device";
+export const setTokenDate = (name: Tokens, token: string) =>
+  localStorage.setItem(name, token);
 
-export const getTokenDate = (name: Tokens) => {
-  const str = localStorage.getItem(name);
-  if (typeof str !== "string") return null;
-  const data = JSON.parse(str);
-  if (!data?.token) return null;
-
-  return data as ITokenData;
-};
-
-export const setTokenDate = (name: Tokens, data: ITokenData) =>
-  localStorage.setItem(name, JSON.stringify(data));
-
-export const setUserType = (type: UserTypes) =>
-  localStorage.setItem("userType", type);
-
-export const getUserType = () => localStorage.getItem("userType");
+export const clearStorage = () => localStorage.clear();

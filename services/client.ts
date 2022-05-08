@@ -6,8 +6,8 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
-import store from "../store/store";
 import { getTokenDate } from "../utils/storage";
+import { errorLink } from "./errorLink";
 
 const { MAIN_ENDPOINT_URL } = process.env;
 
@@ -15,36 +15,25 @@ const httpLink = new HttpLink({
   uri: `${MAIN_ENDPOINT_URL}/graphql`,
 });
 
-const link = ApolloLink.from([httpLink]);
-
 const authLink = setContext((_, { headers }) => {
-  const nowDate = Date.now();
-
-  const deviceData = getTokenDate("device");
-  const adminData = getTokenDate("admin");
+  const rToken = getTokenDate("rToken");
+  const session = getTokenDate("session");
+  const adminSession = getTokenDate("admin");
 
   return {
     headers: {
       ...headers,
-      "x-token-session-x": store.getState().user.token ?? "",
-      "x-token-permanent-x":
-        deviceData?.expiresIn &&
-        (deviceData?.expiresIn === "unlimited" ||
-          Number(deviceData?.expiresIn ?? 0) > nowDate)
-          ? deviceData.token
-          : "",
-      "x-token-admin-x":
-        adminData?.expiresIn &&
-        (adminData?.expiresIn === "unlimited" ||
-          Number(adminData?.expiresIn ?? 0) < nowDate)
-          ? adminData.token
-          : "",
+      "x-user-session-token-x": session ?? "",
+      "x-r-token-x": rToken ?? "",
+      "x-admin-session-token-x": adminSession ?? "",
     },
   };
 });
 
+const link = ApolloLink.from([authLink, errorLink(httpLink), httpLink]);
+
 const client = new ApolloClient({
-  link: authLink.concat(link),
+  link,
   cache: new InMemoryCache({ addTypename: false }),
 });
 

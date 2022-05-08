@@ -1,8 +1,8 @@
 import { IEmployee, IUser } from "../models/entity.model";
 import { UserTypes } from "../models/enums.model";
 import {
+  CLEAR_USER_DATA,
   SET_EMPLOYEE,
-  SET_SESSION_TOKEN,
   SET_USER,
   SET_USER_TYPE,
 } from "./types";
@@ -17,7 +17,8 @@ export const setAuthUserType = (type: UserTypes) => ({
   type: SET_USER_TYPE,
   payload: type,
 });
-export const setSessionToken = (token: string) => ({
-  type: SET_SESSION_TOKEN,
-  payload: token,
+
+export const clearUserData = () => ({
+  type: CLEAR_USER_DATA,
+  payload: null,
 });

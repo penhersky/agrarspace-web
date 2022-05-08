@@ -1,4 +1,4 @@
-import { Avatar, Typography } from "antd";
+import { Avatar, Dropdown, Typography } from "antd";
 import clsx from "clsx";
 import Link from "next/link";
 import { useTranslation } from "next-i18next";
@@ -9,6 +9,7 @@ import { UserTypes } from "../../../models/enums.model";
 import { StateType } from "../../../store/store";
 import { CatalogIcon, LineChartIcon } from "../../../utils/icons";
 import styles from "./app-header.module.less";
+import UserMenu from "./userMenu";
 
 const AppHeader = () => {
   const { t } = useTranslation("navigation");
@@ -43,12 +44,28 @@ const AppHeader = () => {
       </div>
       <div className={styles.side}>
         {user || employee ? (
-          <div className={styles.emblem}>
-            <Avatar size={27}>{name.substring(0, 1)}</Avatar>
-            <Typography.Title level={5} className={styles.name}>
-              {name}
-            </Typography.Title>
-          </div>
+          <Dropdown
+            overlay={
+              <UserMenu
+                type={type}
+                name={
+                  employee
+                    ? employee.name
+                    : `${user?.firstName} ${user?.lastName}`
+                }
+              />
+            }
+            arrow={{ pointAtCenter: true }}
+            placement="bottomRight"
+            trigger={["click"]}
+          >
+            <div className={styles.emblem}>
+              <Avatar size={27}>{name.substring(0, 1)}</Avatar>
+              <Typography.Title level={5} className={styles.name}>
+                {name}
+              </Typography.Title>
+            </div>
+          </Dropdown>
         ) : null}
       </div>
     </div>

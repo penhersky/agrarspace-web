@@ -1,0 +1,19 @@
+.menu {
+  display: flex;
+  flex-flow: nowrap column;
+  min-width: 100px;
+  background-color: @local-background;
+  padding: 5px 0;
+
+  .item {
+    padding: 5px 15px;
+    transition: linear @global-hover-time;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    &:hover {
+      background-color: @global-hover-color;
+    }
+  }
+}

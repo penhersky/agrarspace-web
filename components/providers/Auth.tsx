@@ -9,7 +9,6 @@ import {
   setAuthEmployee,
   setAuthUser,
   setAuthUserType,
-  setSessionToken,
 } from "../../store/actions";
 
 interface IAuthProps {
@@ -25,7 +24,6 @@ const Auth: React.FC<IAuthProps> = ({ children }) => {
   useEffect(() => {
     if (data) {
       dispatch(setAuthUserType(data.authenticate.type));
-      dispatch(setSessionToken(data.authenticate.token));
 
       switch (data.authenticate.type) {
         case UserTypes.Employee:
@@ -40,8 +38,6 @@ const Auth: React.FC<IAuthProps> = ({ children }) => {
       }
     }
   }, [dispatch, data]);
-
-  // TODO: create redirect if authentication get error from error.graphQLErrors
 
   return children;
 };
