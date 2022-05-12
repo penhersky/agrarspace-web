@@ -1,0 +1,38 @@
+@widget-margin: 20px;
+
+.dashboard {
+  display: flex;
+  flex-flow: nowrap column;
+  padding-top: 20px;
+  .widgets {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+
+    .widget {
+      background-color: @local-background;
+      margin: 0 @widget-margin 0 0;
+      box-shadow: @box-shadow-base;
+      padding: 20px;
+      transition: linear @global-hover-time;
+    }
+
+    .plantedWidget {
+      width: calc(30% - @widget-margin * 2);
+    }
+
+    .dayPeriodWidget {
+      width: calc(36% - @widget-margin * 2);
+    }
+
+    .weatherWidget {
+      width: calc(36% - @widget-margin * 2);
+      cursor: pointer;
+      &:hover {
+        background-color: @global-hover-color;
+      }
+    }
+  }
+}

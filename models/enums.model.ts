@@ -16,3 +16,8 @@ export enum EmployeeRoles {
   Manager = "manager",
   Director = "director",
 }
+
+export enum Lang {
+  en = "en",
+  ua = "ua",
+}

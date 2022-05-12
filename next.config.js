@@ -32,4 +32,19 @@ module.exports = withPlugins(plugins, {
     WEATHER_API_KEY: process.env.WEATHER_API_KEY,
     MAP_ACCESS_KEY: process.env.MAP_ACCESS_KEY,
   },
+
+  webpack(config) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: {
+        test: /\.(js|ts)x?$/,
+        // for webpack 5 use
+        // { and: [/\.(js|ts)x?$/] }
+      },
+
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
+  },
 });

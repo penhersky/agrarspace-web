@@ -4,6 +4,7 @@ import { Result } from "antd";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import {
   Calendar,
@@ -16,15 +17,20 @@ import { PageProvider } from "../../../components/providers";
 import { OZ_PAGES } from "../../../constants/navigation";
 import useOrganizationNavigator from "../../../hooks/organizationNavigator.hook";
 import { IOrganization } from "../../../models/entity.model";
+import { IRootWeather } from "../../../models/weather.model";
 import getLocaleProps from "../../../services/initialProps/onlyLocale.service";
 import { GET_MY_ORGANIZATION } from "../../../services/schemas/organization.schema";
+import { setWeather } from "../../../store/actions";
 import styles from "../../../styles/pages/Organization.module.less";
 
 interface IOrganizationQuery {
   getMyOrganization: IOrganization;
 }
 
-const OrganizationDashboard: NextPage = () => {
+const OrganizationDashboard: NextPage<{ weather: IRootWeather }> = ({
+  weather,
+}) => {
+  const dispatch = useDispatch();
   const { data, loading, error } = useQuery<IOrganizationQuery>(
     GET_MY_ORGANIZATION,
     {
@@ -37,6 +43,10 @@ const OrganizationDashboard: NextPage = () => {
   const [isBrowser, setIsBrowser] = useState(false);
 
   useEffect(() => setIsBrowser(true), []);
+
+  useEffect(() => {
+    dispatch(setWeather(weather));
+  }, [dispatch, weather]);
 
   if (error) return <div>Organization Error</div>; // TODO: Add Error message
 

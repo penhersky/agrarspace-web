@@ -1,3 +1,5 @@
+import { Lang } from "./enums.model";
+
 export interface Locale {
-  locale: string;
+  locale: Lang;
 }

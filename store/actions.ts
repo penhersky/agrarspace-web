@@ -1,10 +1,12 @@
 import { IEmployee, IUser } from "../models/entity.model";
 import { UserTypes } from "../models/enums.model";
+import { IRootWeather } from "../models/weather.model";
 import {
   CLEAR_USER_DATA,
   SET_EMPLOYEE,
   SET_USER,
   SET_USER_TYPE,
+  SET_WEATHER,
 } from "./types";
 
 // user
@@ -21,4 +23,10 @@ export const setAuthUserType = (type: UserTypes) => ({
 export const clearUserData = () => ({
   type: CLEAR_USER_DATA,
   payload: null,
+});
+
+// weather
+export const setWeather = (data: IRootWeather) => ({
+  type: SET_WEATHER,
+  payload: data,
 });
