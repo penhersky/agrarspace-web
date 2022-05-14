@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { OZ_PAGES } from "../../../constants/navigation";
+import { WEATHER } from "../../../constants/units";
 import useRouting from "../../../hooks/organizationNavigator.hook";
 import { Lang } from "../../../models/enums.model";
 import { getWeatherService } from "../../../services/weather/getWether.service";
@@ -65,19 +66,22 @@ const WeatherWidget = () => {
       <div className={styles.main}>
         <div className={styles.group}>
           <Typography.Title level={5} className={styles.mainTemperature}>
-            {weather.current.temp.toFixed(1)}°C
+            {weather.current.temp.toFixed(1)}
+            {WEATHER.DEGREES}
           </Typography.Title>
           <TemperatureIcon size={32} className="icons" />
         </div>
         <div className={styles.group}>
           <Typography.Title level={5} className={styles.mainSub}>
-            {weather.current.pressure}mm
+            {weather.current.pressure}
+            {WEATHER.PRESSURE}
           </Typography.Title>
           <PressureIcon size={24} className="icons" />
         </div>
         <div className={styles.group}>
           <Typography.Title level={5} className={styles.mainSub}>
-            {weather.current.humidity}%
+            {weather.current.humidity}
+            {WEATHER.HUMIDITY}
           </Typography.Title>
           <HumidityIcon size={24} className="icons" />
         </div>
@@ -87,7 +91,7 @@ const WeatherWidget = () => {
             style={{ transform: `rotate(${weather.current.wind_deg}deg)` }}
           />
           <Typography.Title level={5} className={styles.mainSub}>
-            {weather.current.wind_speed} m/s
+            {weather.current.wind_speed} {WEATHER.WIND}
           </Typography.Title>
         </div>
         <div
@@ -97,14 +101,16 @@ const WeatherWidget = () => {
           )}
         >
           <Typography.Title level={5} className={styles.mainSub}>
-            {weather.current.clouds}%
+            {weather.current.clouds}
+            {WEATHER.CLOUDS}
           </Typography.Title>
           <CloudsIcon size={24} className="icons" />
         </div>
 
         <div className={clsx(styles.group, visibility)}>
           <Typography.Title level={5} className={styles.mainSub}>
-            {weather.current.visibility}km
+            {weather.current.visibility}
+            {WEATHER.VISIBILITY}
           </Typography.Title>
           <VisibilityIcon size={24} className="icons" />
         </div>
