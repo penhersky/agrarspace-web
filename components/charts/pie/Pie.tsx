@@ -1,4 +1,4 @@
-import { arc as Arc, pie as Pie, PieArcDatum, select } from "d3";
+import { arc as Arc, interpolate, pie as Pie, PieArcDatum, select } from "d3";
 import React, { useLayoutEffect, useRef } from "react";
 
 import { IDataPie, IExtendFunctionality } from "../../../models/charts.model";
@@ -8,6 +8,7 @@ interface IPieChartProps extends IExtendFunctionality {
   weight?: number;
   radius?: number;
   data: IDataPie[];
+  colors: string[];
 }
 
 const PieChart: React.FC<IPieChartProps> = ({
@@ -15,6 +16,7 @@ const PieChart: React.FC<IPieChartProps> = ({
   weight = 10,
   radius: strokeRadius = 3,
   data,
+  colors,
   extendFunctionality,
 }) => {
   const ref = useRef<SVGSVGElement>(null);
@@ -42,14 +44,22 @@ const PieChart: React.FC<IPieChartProps> = ({
       .enter()
       .append("path")
       .attr("d", arc)
-      .attr("fill", (d) => d.data.color);
-
+      .attr("fill", (_, i) => colors[i])
+      .transition()
+      .duration((_, i) => i + 1 + 1000)
+      .attrTween("d", (d) => {
+        const i = interpolate(d.startAngle + 0.1, d.endAngle);
+        return (t) => {
+          d.endAngle = i(t);
+          return arc(d) as string;
+        };
+      });
     extendFunctionality?.(svg);
 
     return () => {
       svg.selectChild().remove();
     };
-  }, [data, size, weight, extendFunctionality, strokeRadius]);
+  }, [data, size, weight, extendFunctionality, strokeRadius, colors]);
 
   return <svg ref={ref} width={size} height={size} />;
 };

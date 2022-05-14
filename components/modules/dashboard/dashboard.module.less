@@ -3,20 +3,24 @@
 .dashboard {
   display: flex;
   flex-flow: nowrap column;
-  padding-top: 20px;
+  padding-top: 10px;
   .widgets {
     display: flex;
     flex-flow: wrap row;
     justify-content: center;
     margin-top: 10px;
     margin-bottom: 30px;
+    min-height: 320px;
 
     .widget {
       background-color: @local-background;
-      margin: 0 @widget-margin 0 0;
       box-shadow: @box-shadow-base;
       padding: 20px;
       transition: linear @global-hover-time;
+
+      &:nth-child(-n + 2) {
+        margin: 0 @widget-margin 0 0;
+      }
     }
 
     .plantedWidget {

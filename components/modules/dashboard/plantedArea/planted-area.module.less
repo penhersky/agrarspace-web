@@ -1,0 +1,35 @@
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  padding: 10px 0;
+
+  .details {
+    position: absolute;
+    top: -10px;
+    right: -3px;
+    color: @text-color-secondary;
+    padding: 2px;
+    font-size: @font-size;
+  }
+
+  .pieText {
+    font-size: @font-size-large;
+  }
+
+  .value {
+    margin: 20px 0;
+    font-size: @font-size;
+  }
+
+  .label {
+    font-size: @font-size-medium;
+    color: @text-color-secondary;
+    margin: 0 !important;
+  }
+}

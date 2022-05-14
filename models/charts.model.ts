@@ -1,6 +1,6 @@
 import { Selection } from "d3";
 
-export type SVGElement = Selection<
+export type ISVGElement = Selection<
   SVGSVGElement | null,
   unknown,
   null,
@@ -9,10 +9,9 @@ export type SVGElement = Selection<
 
 export interface IExtendFunctionality {
   // eslint-disable-next-line no-unused-vars
-  extendFunctionality?: (svg: SVGElement) => void;
+  extendFunctionality?: (svg: ISVGElement) => void;
 }
 
 export interface IDataPie {
-  color: string;
   value: number;
 }

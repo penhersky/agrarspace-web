@@ -1,10 +1,10 @@
 import clsx from "clsx";
 import React from "react";
 
-import { PieChart } from "../../charts";
 import { WeatherWidget } from "../../organism";
 import { ViewProvider } from "../../providers";
 import styles from "./dashboard.module.less";
+import PlantedAreaWidget from "./plantedArea/PlantedArea";
 
 // eslint-disable-next-line arrow-body-style
 const Dashboard = () => {
@@ -13,21 +13,9 @@ const Dashboard = () => {
       <div className={clsx("scroll-area", styles.dashboard)}>
         <div className={styles.widgets}>
           <div className={clsx(styles.widget, styles.plantedWidget)}>
-            <PieChart
-              data={[
-                { color: "green", value: 20 },
-                { color: "lightgray", value: 80 },
-              ]}
-            />
+            <PlantedAreaWidget />
           </div>
-          <div className={clsx(styles.widget, styles.dayPeriodWidget)}>
-            <PieChart
-              data={[
-                { color: "green", value: 20 },
-                { color: "lightgray", value: 80 },
-              ]}
-            />
-          </div>
+          <div className={clsx(styles.widget, styles.dayPeriodWidget)}>#</div>
           <div className={clsx(styles.widget, styles.weatherWidget)}>
             <WeatherWidget />
           </div>

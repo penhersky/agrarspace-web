@@ -35,6 +35,7 @@
     "import/no-mutable-exports": "warn",
     "react/jsx-no-useless-fragment": "warn",
     "react/jsx-props-no-spreading": "warn",
+    "no-param-reassign": "warn",
     "react/react-in-jsx-scope": "off",
     "react/require-default-props": "off",
     "react/jsx-filename-extension": "off",
