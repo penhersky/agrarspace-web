@@ -4,7 +4,11 @@ import clsx from "clsx";
 import { useTranslation } from "next-i18next";
 import React, { useMemo } from "react";
 
-import { PLANTED_AREA_PERCENT } from "../../../../constants/charts";
+import {
+  PIE_CHART_SIZE_MEDIUM,
+  PIE_CHART_WEIGHT_MEDIUM,
+  PLANTED_AREA_PERCENT,
+} from "../../../../constants/charts";
 import { HECTARE } from "../../../../constants/units";
 import { ISVGElement } from "../../../../models/charts.model";
 import { IGetOrganizationPlantedAreaPerYear } from "../../../../models/statistics.model";
@@ -14,10 +18,11 @@ import { PieChart } from "../../../charts";
 import { Loading } from "../../../shared";
 import styles from "./planted-area.module.less";
 
-const PIE_CHART_SIZE_MEDIUM = 220;
-const PIE_CHART_WEIGHT_MEDIUM = 25;
+interface IPlantedAreaProps {
+  className?: string;
+}
 
-const PlantedArea = () => {
+const PlantedArea: React.FC<IPlantedAreaProps> = ({ className }) => {
   const { t } = useTranslation();
   const { data, loading, error } = useQuery<IGetOrganizationPlantedAreaPerYear>(
     ORGANIZATION_PLANTED_AREA,
@@ -66,10 +71,10 @@ const PlantedArea = () => {
   };
 
   if (error) return <Typography>Error</Typography>;
-  if (loading) return <Loading />;
+  if (loading) return <Loading className={className} />;
 
   return (
-    <div className={styles.container}>
+    <div className={clsx(className, styles.container)}>
       <Button className={styles.details} type="link">
         {t("actions:details")}
       </Button>

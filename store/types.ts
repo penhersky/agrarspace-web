@@ -5,3 +5,4 @@ export const CLEAR_USER_DATA = "CLEAR_USER_DATA";
 
 // weather
 export const SET_WEATHER = "SET_WEATHER";
+export const SET_WEATHER_COORDINATES = "SET_WEATHER_COORDINATES";

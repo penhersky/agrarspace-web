@@ -31,3 +31,8 @@ export interface IOrganization<T = IUser> {
   createdAt: String;
   updatedAt: String;
 }
+
+export interface ILocation {
+  lng: number;
+  lat: number;
+}

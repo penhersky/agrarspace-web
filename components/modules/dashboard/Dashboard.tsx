@@ -3,6 +3,7 @@ import React from "react";
 
 import { WeatherWidget } from "../../organism";
 import { ViewProvider } from "../../providers";
+import { Message } from "../../shared";
 import styles from "./dashboard.module.less";
 import PlantedAreaWidget from "./plantedArea/PlantedArea";
 
@@ -12,13 +13,15 @@ const Dashboard = () => {
     <ViewProvider>
       <div className={clsx("scroll-area", styles.dashboard)}>
         <div className={styles.widgets}>
-          <div className={clsx(styles.widget, styles.plantedWidget)}>
-            <PlantedAreaWidget />
+          <PlantedAreaWidget
+            className={clsx(styles.widget, styles.plantedWidget)}
+          />
+          <div className={clsx(styles.widget, styles.dayPeriodWidget)}>
+            <Message title="Time" size="medium" type="warn" />
           </div>
-          <div className={clsx(styles.widget, styles.dayPeriodWidget)}>#</div>
-          <div className={clsx(styles.widget, styles.weatherWidget)}>
-            <WeatherWidget />
-          </div>
+          <WeatherWidget
+            className={clsx(styles.widget, styles.weatherWidget)}
+          />
         </div>
       </div>
     </ViewProvider>

@@ -1,4 +1,4 @@
-import { IEmployee, IUser } from "../models/entity.model";
+import { IEmployee, ILocation, IUser } from "../models/entity.model";
 import { UserTypes } from "../models/enums.model";
 import { IRootWeather } from "../models/weather.model";
 import {
@@ -7,6 +7,7 @@ import {
   SET_USER,
   SET_USER_TYPE,
   SET_WEATHER,
+  SET_WEATHER_COORDINATES,
 } from "./types";
 
 // user
@@ -28,5 +29,9 @@ export const clearUserData = () => ({
 // weather
 export const setWeather = (data: IRootWeather) => ({
   type: SET_WEATHER,
+  payload: data,
+});
+export const setWeatherCoordinates = (data: ILocation) => ({
+  type: SET_WEATHER_COORDINATES,
   payload: data,
 });

@@ -8,9 +8,10 @@ import { Link } from "react-router-dom";
 import { OZ_PAGES } from "../../../constants/navigation";
 import { WEATHER } from "../../../constants/units";
 import useRouting from "../../../hooks/organizationNavigator.hook";
+import { ILocation } from "../../../models/entity.model";
 import { Lang } from "../../../models/enums.model";
 import { getWeatherService } from "../../../services/weather/getWether.service";
-import { setWeather } from "../../../store/actions";
+import { setWeather, setWeatherCoordinates } from "../../../store/actions";
 import { StateType } from "../../../store/store";
 import {
   ArrowStickRight,
@@ -21,26 +22,35 @@ import {
   VisibilityIcon,
 } from "../../../utils/icons";
 import { getWeatherIconPathById, WeatherIds } from "../../../utils/weatherIcon";
+import { InputLocation } from "../../actions";
 import { DynamicSvgImage, Loading } from "../../shared";
 import styles from "./weather-widget.module.less";
 
-const WeatherWidget = () => {
+interface IWeatherWidget {
+  className?: string;
+}
+
+const WeatherWidget: React.FC<IWeatherWidget> = ({ className }) => {
   const dispatch = useDispatch();
   const { createPath } = useRouting();
   const { i18n } = useTranslation();
-  const { weather } = useSelector((state: StateType) => state.weather);
+  const { weather, location } = useSelector(
+    (state: StateType) => state.weather
+  );
 
   useEffect(() => {
-    (async () => {
-      const data = await getWeatherService(
-        "on-call-weather",
-        49.816115,
-        23.331091,
-        i18n.language as Lang
-      );
-      dispatch(setWeather(data.data));
-    })();
-  }, [i18n.language, dispatch]);
+    if (!weather && location) {
+      (async () => {
+        const data = await getWeatherService(
+          "on-call-weather",
+          location.lat,
+          location.lng,
+          i18n.language as Lang
+        );
+        dispatch(setWeather(data.data));
+      })();
+    }
+  }, [i18n.language, dispatch, weather, location]);
 
   const visibility = useMemo(() => {
     if (!weather) return styles.none;
@@ -50,10 +60,19 @@ const WeatherWidget = () => {
     return styles.none;
   }, [weather]);
 
-  if (!weather) return <Loading />;
+  const locationHandler = (data: ILocation) => {
+    dispatch(setWeatherCoordinates(data));
+  };
+
+  if (!location)
+    return <InputLocation className={className} onLocated={locationHandler} />;
+  if (!weather) return <Loading className={clsx(className, styles.widget)} />;
 
   return (
-    <Link className={styles.widget} to={createPath(OZ_PAGES.weather)}>
+    <Link
+      className={clsx(className, styles.widget)}
+      to={createPath(OZ_PAGES.weather)}
+    >
       <DynamicSvgImage
         className={styles.mainImage}
         url={getWeatherIconPathById({

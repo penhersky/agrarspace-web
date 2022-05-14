@@ -31,6 +31,13 @@ a {
   fill: @icon-color;
 }
 
+.hover-opacity {
+  transition: linear @global-hover-time;
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
 .scroll-area {
   overflow-y: auto;
   margin: 0;

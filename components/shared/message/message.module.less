@@ -1,0 +1,54 @@
+.message {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: nowrap column;
+
+  .title {
+    margin-bottom: 5px;
+  }
+  .title-small {
+    font-size: @font-size;
+  }
+  .title-medium {
+    font-size: @font-size-medium;
+  }
+  .title-large {
+    font-size: @font-size-large;
+  }
+
+  .description-small {
+    font-size: @font-size-small;
+  }
+  .description-medium {
+    font-size: @font-size;
+  }
+  .description-large {
+    font-size: @font-size-medium;
+  }
+
+  .icon {
+    margin: 15px;
+  }
+  .icon-info {
+    fill: @info-color;
+  }
+  .icon-success {
+    fill: @success-color;
+  }
+  .icon-warn {
+    fill: @warning-color;
+  }
+  .icon-error {
+    fill: @error-color;
+  }
+  .icon-none {
+    fill: @icon-color;
+  }
+
+  .children {
+    padding: 10px;
+  }
+}

@@ -1,5 +1,11 @@
 import React from "react";
 
-const Loading = () => <div>Loading...</div>;
+interface ILoading {
+  className?: string;
+}
+
+const Loading: React.FC<ILoading> = ({ className }) => (
+  <div className={className}>Loading...</div>
+);
 
 export default Loading;

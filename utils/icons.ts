@@ -1,3 +1,4 @@
+export type { IconType } from "react-icons";
 export {
   CgMenuGridR as CatalogIcon,
   CgOrganisation as OrganizationIcon,
@@ -8,9 +9,13 @@ export {
   MdOutlineKeyboardArrowRight as ArrowRight,
   MdOutlineArrowUpward as ArrowStickRight,
   MdCloud as CloudsIcon,
+  MdOutlineDone as DoneIcon,
   MdOutlinePeopleAlt as EmployeesIcon,
+  MdErrorOutline as ErrorIcon,
+  MdOutlineInfo as InfoIcon,
   MdVerticalAlignBottom as PressureIcon,
   MdRemoveRedEye as VisibilityIcon,
+  MdWarningAmber as WarnIcon,
 } from "react-icons/md";
 export {
   RiCalendar2Line as CalendarIcon,
