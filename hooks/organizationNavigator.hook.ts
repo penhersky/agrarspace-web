@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useMemo } from "react";
 
 import { AUTH, OZ_PAGES } from "../constants/navigation";
+import { decrypt } from "../utils/crypto";
 import { capitalizeFirstLetter } from "../utils/string";
 
 type Navigator = () => Promise<boolean>;
@@ -49,6 +50,7 @@ export default () => {
 
   return {
     id: organizationId,
+    decryptedId: decrypt(organizationId),
 
     createPath: (page) => `/organization/${organizationId}/${page}`,
 

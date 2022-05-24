@@ -1,0 +1,93 @@
+@planted-color: #f9c200;
+@collected-color: #00d322;
+@collected-color: #00d322;
+@block-color: #0019ff;
+@interval-color: #b5bcff;
+
+.label {
+  font-size: @font-size;
+  font-weight: 400;
+}
+
+.plantedAvgLine {
+  fill: none;
+  stroke: @planted-color;
+  stroke-dasharray: 6;
+  opacity: 0.7;
+}
+
+.collectedAvgLine {
+  fill: none;
+  stroke: @collected-color;
+  stroke-dasharray: 6;
+}
+
+.collectedPeriod {
+  fill: @collected-color;
+}
+
+.plantedPeriod {
+  fill: @planted-color;
+}
+
+.block {
+  fill: @block-color;
+  opacity: 0.05;
+}
+
+.interval {
+  fill: @interval-color;
+  opacity: 0.5;
+}
+
+.legend {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: center;
+
+  .mark {
+    margin: 0 20px;
+    width: 30px;
+    height: 20px;
+  }
+
+  &__item {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: center;
+    align-items: center;
+  }
+  &__plantedPeriod {
+    background-color: @planted-color;
+  }
+  &__plantedCollected {
+    background-color: @collected-color;
+  }
+  &__plantedInterval {
+    background-color: @interval-color;
+  }
+  &__collectedMedian {
+    background: repeating-linear-gradient(
+      to right,
+      @collected-color 0,
+      @collected-color 10px,
+      transparent 10px,
+      transparent 12px
+    );
+    height: 1.5px;
+    width: 30px;
+    margin: 0 20px;
+  }
+  &__plantedMedian {
+    background: repeating-linear-gradient(
+      to right,
+      @planted-color 0,
+      @planted-color 10px,
+      transparent 10px,
+      transparent 12px
+    );
+    height: 1.5px;
+    width: 30px;
+    margin: 0 20px;
+  }
+}

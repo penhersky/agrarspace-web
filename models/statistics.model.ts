@@ -1,3 +1,5 @@
+import { TOrNull } from "./global.model";
+
 interface PercentSection {
   value: number;
   name: string;
@@ -12,4 +14,20 @@ export interface IPercentStatistic {
 
 export interface IGetOrganizationPlantedAreaPerYear {
   getOrganizationPlantedAreaPerYear: IPercentStatistic;
+}
+
+export interface IDataAnnualYearsIncome {
+  sumPlanted: number;
+  sumCollected: TOrNull<number>;
+  year: number;
+}
+export interface ITotalAnnualYearsIncomeContent {
+  avgCollected: number;
+  avgPlanted: number;
+  maxValue: number;
+  data: IDataAnnualYearsIncome[];
+}
+
+export interface IGetTotalOrganizationAnnualYearsIncome {
+  getTotalOrganizationAnnualYearsIncome: ITotalAnnualYearsIncomeContent;
 }

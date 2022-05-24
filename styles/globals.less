@@ -31,6 +31,19 @@ a {
   fill: @icon-color;
 }
 
+.transparent {
+  fill: transparent;
+  color: transparent;
+  background: transparent;
+}
+
+.card {
+  background-color: @local-background;
+  box-shadow: @box-shadow-base;
+  padding: 20px;
+  border-radius: @border-radius-base;
+}
+
 .hover-opacity {
   transition: linear @global-hover-time;
   &:hover {

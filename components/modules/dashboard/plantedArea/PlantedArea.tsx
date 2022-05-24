@@ -13,7 +13,7 @@ import { HECTARE } from "../../../../constants/units";
 import { ISVGElement } from "../../../../models/charts.model";
 import { IGetOrganizationPlantedAreaPerYear } from "../../../../models/statistics.model";
 import { ORGANIZATION_PLANTED_AREA } from "../../../../services/schemas/statistics.schema";
-import { formatLargeValue } from "../../../../utils/numberFormate";
+import { formatNumber } from "../../../../utils/valueFormate";
 import { PieChart } from "../../../charts";
 import { Loading } from "../../../shared";
 import styles from "./planted-area.module.less";
@@ -45,7 +45,7 @@ const PlantedArea: React.FC<IPlantedAreaProps> = ({ className }) => {
   const valueHa = useMemo(
     () =>
       data?.getOrganizationPlantedAreaPerYear.data
-        .map((value) => formatLargeValue(value.value))
+        .map((value) => formatNumber(value.value))
         .join(" / "),
     [data?.getOrganizationPlantedAreaPerYear]
   );

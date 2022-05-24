@@ -1,0 +1,15 @@
+{
+  "units": {
+    "year": "Year",
+    "tons": "Tons",
+    "T": "T"
+  },
+  "yearIncome": {
+    "title": "Yesrs Sowing (T) Statistics",
+    "planted": "Planted",
+    "collected": "Collected",
+    "difference": "Difference",
+    "plantedMedian": "Planted median",
+    "collectedMedian": "Collected median"
+  }
+}
