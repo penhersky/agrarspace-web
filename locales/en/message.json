@@ -1,0 +1,22 @@
+{
+  "needConfirmation": "Need Confirmation",
+
+  "default": {
+    "success": {
+      "title": "Operation was successful",
+      "description": "You can continue your work"
+    },
+    "warn": {
+      "title": "This operation is not correct",
+      "description": ""
+    },
+    "info": {
+      "title": "",
+      "description": ""
+    },
+    "error": {
+      "title": "Oops... Something went wrong",
+      "description": "Try again or reload window"
+    }
+  }
+}

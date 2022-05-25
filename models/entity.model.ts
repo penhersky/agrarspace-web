@@ -24,12 +24,13 @@ export interface IEmployee {
 
 export interface IOrganization<T = IUser> {
   id: number;
-  name: String;
+  name: string;
+  logo?: string;
   owner: T;
-  description: String;
+  description?: string;
   confirmed: boolean;
-  createdAt: String;
-  updatedAt: String;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ILocation {

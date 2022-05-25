@@ -12,6 +12,7 @@ export {
   MdOutlineDone as DoneIcon,
   MdOutlinePeopleAlt as EmployeesIcon,
   MdErrorOutline as ErrorIcon,
+  MdPriorityHigh as ExclamationIcon, // !
   MdOutlineInfo as InfoIcon,
   MdVerticalAlignBottom as PressureIcon,
   MdRefresh as RefreshIcon,

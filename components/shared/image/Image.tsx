@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import errorImageSec from "../../../assets/noLoaded.png";
 
 interface IImageProps {
-  src: string;
+  src?: string;
   alt: string;
   className?: string;
 }
@@ -16,7 +16,7 @@ const Image: React.FC<IImageProps> = ({ alt, className, src }) => {
       className={className}
       alt={alt}
       onError={() => setError(true)}
-      src={error ? errorImageSec.src : src}
+      src={error || !src ? errorImageSec.src : src}
     />
   );
 };

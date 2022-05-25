@@ -1,5 +1,6 @@
 import { Typography } from "antd";
 import clsx from "clsx";
+import { useTranslation } from "next-i18next";
 import React, { useMemo } from "react";
 
 import { DoneIcon, IconType, InfoIcon, WarnIcon } from "../../../utils/icons";
@@ -8,8 +9,9 @@ import styles from "./message.module.less";
 interface IMessageProps {
   size?: "small" | "medium" | "large";
   type?: "info" | "success" | "info" | "warn" | "error" | "none";
-  title: string;
+  title?: string;
   description?: string;
+  hiddenDescription?: boolean;
   icon?: IconType;
   children?: React.ReactNode;
   className?: string;
@@ -20,10 +22,13 @@ const Message: React.FC<IMessageProps> = ({
   type = "none",
   title,
   description,
+  hiddenDescription,
   icon: Icon,
   children,
   className,
 }) => {
+  const { t } = useTranslation("message");
+
   const DefaultIcons = useMemo(() => {
     switch (type) {
       case "success":
@@ -67,13 +72,13 @@ const Message: React.FC<IMessageProps> = ({
         level={4}
         className={clsx(styles.title, styles[`title-${size}`])}
       >
-        {title}
+        {title ?? t(`default.${type}.title`)}
       </Typography.Title>
-      {description && (
+      {!hiddenDescription && (
         <Typography.Text
           className={clsx(styles.description, styles[`description-${size}`])}
         >
-          {description}
+          {description ?? t(`default.${type}.description`)}
         </Typography.Text>
       )}
       <div className={styles.children}>{children}</div>

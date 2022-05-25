@@ -57,9 +57,11 @@ const OrganizationDashboard: NextPage<{ weather: IRootWeather }> = ({
           <div className={styles.organization}>
             <SideBar
               organization={{
-                logo: "https://tripoli.land/uploads/org/logo/1774/webp_list_harveast_logo.png.webp",
+                logo:
+                  data?.getMyOrganization.logo ??
+                  "https://tripoli.land/uploads/org/logo/1774/webp_list_harveast_logo.png.webp", // TODO: delete it after adding logo logic
                 // logo: "https://tripoli.land/uploads/org/logo/427/webp_list_logo_for-student-2.png.webp",
-                name: "test",
+                name: data?.getMyOrganization.name as string,
               }}
             />
 
@@ -74,7 +76,12 @@ const OrganizationDashboard: NextPage<{ weather: IRootWeather }> = ({
                   path={createPath(OZ_PAGES.organization)}
                   element={
                     <Organization
-                      organization={data?.getMyOrganization as IOrganization}
+                      organization={
+                        {
+                          ...data?.getMyOrganization,
+                          logo: "https://tripoli.land/uploads/org/logo/1774/webp_list_harveast_logo.png.webp", // TODO: delete it after adding logo logic
+                        } as IOrganization
+                      }
                     />
                   }
                 />

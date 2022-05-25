@@ -1,0 +1,22 @@
+.generalInfo {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-around;
+  align-items: center;
+  .item {
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px;
+    text-align: center;
+    .title {
+      font-size: calc(@font-size-medium * 1.5);
+      margin-bottom: 3px;
+    }
+    .description {
+      font-size: calc(@font-size * 1.4);
+      margin: 0;
+    }
+  }
+}

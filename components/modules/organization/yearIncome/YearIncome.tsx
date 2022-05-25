@@ -60,7 +60,7 @@ const YearIncome: React.FC<IYearIncomeProps> = ({ className }) => {
             data={data.getTotalOrganizationAnnualYearsIncome.data}
           />
         ) : (
-          <Message type="error" title="Data loading error" size="medium" />
+          <Message type="error" size="medium" />
         )}
       </div>
     </>
