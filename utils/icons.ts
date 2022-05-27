@@ -16,6 +16,8 @@ export {
   MdOutlineInfo as InfoIcon,
   MdVerticalAlignBottom as PressureIcon,
   MdRefresh as RefreshIcon,
+  MdOutlineArrowDropUp as SortArrowDownIcon,
+  MdOutlineArrowDropDown as SortArrowUpIcon,
   MdRemoveRedEye as VisibilityIcon,
   MdWarningAmber as WarnIcon,
 } from "react-icons/md";

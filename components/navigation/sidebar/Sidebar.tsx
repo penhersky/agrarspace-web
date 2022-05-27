@@ -68,20 +68,21 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
           <Divider className={styles.divider} />
           <Item
             Icon={({ className, size }) => (
+              <PlantIcon className={className} size={size} />
+            )}
+            to={createPath(OZ_PAGES.yields)}
+          >
+            {t("years")}
+          </Item>
+          <Item
+            Icon={({ className, size }) => (
               <PlantationIcon className={className} size={size} />
             )}
             to={createPath(OZ_PAGES.plantations)}
           >
             {t("plantations")}
           </Item>
-          <Item
-            Icon={({ className, size }) => (
-              <PlantIcon className={className} size={size} />
-            )}
-            to={createPath(OZ_PAGES.yields)}
-          >
-            {t("yields")}
-          </Item>
+
           <Item
             Icon={({ className, size }) => (
               <MapIcon className={className} size={size} />

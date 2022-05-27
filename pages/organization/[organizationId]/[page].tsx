@@ -11,6 +11,7 @@ import {
   Dashboard,
   Weather,
   Organization,
+  Plantations,
 } from "../../../components/modules";
 import { AppHeader, SideBar } from "../../../components/navigation";
 import { PageProvider } from "../../../components/providers";
@@ -84,6 +85,10 @@ const OrganizationDashboard: NextPage<{ weather: IRootWeather }> = ({
                       }
                     />
                   }
+                />
+                <Route
+                  path={createPath(OZ_PAGES.plantations)}
+                  element={<Plantations />}
                 />
                 <Route
                   path={createPath(OZ_PAGES.calendar)}

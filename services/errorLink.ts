@@ -28,6 +28,7 @@ export const errorLink = (link: HttpLink) =>
     if (graphQLErrors) {
       // eslint-disable-next-line no-restricted-syntax
       for (const err of graphQLErrors) {
+        if (!err.extensions?.code) return undefined;
         switch (err.extensions.code) {
           case ERROR_CODES.AUTHENTICATION_ERROR_SESSION:
             return fromPromise(

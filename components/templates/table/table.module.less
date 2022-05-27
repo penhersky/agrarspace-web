@@ -1,0 +1,79 @@
+.table {
+  box-shadow: @box-shadow-small;
+  background-color: @local-background;
+  min-height: 700px;
+  display: flex;
+  flex-flow: nowrap column;
+  justify-content: space-between;
+
+  table {
+    width: 100%;
+    thead {
+      tr {
+        th {
+          text-align: start;
+          height: 45px;
+          font-weight: 500;
+          cursor: pointer;
+          .heaterItemContent {
+            display: flex;
+            flex-flow: nowrap row;
+            justify-content: space-between;
+            padding-left: 20px;
+            padding-right: 10px;
+            transition: linear @global-hover-time;
+            // width: 100%;
+            .sort {
+              visibility: hidden;
+            }
+            .sortVisible {
+              visibility: visible;
+            }
+          }
+          &:hover {
+            background-color: @global-hover-table-color;
+            .heaterItemContent {
+              .sort {
+                visibility: visible;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    tbody {
+      transition: linear @animation-fade-time;
+      tr {
+        transition: linear @global-hover-time;
+        cursor: pointer;
+        &:hover {
+          background-color: @global-hover-table-color;
+        }
+        td {
+          padding-left: 20px;
+          height: 60px;
+          border-top: 0.5px solid @border-color-base;
+          border-bottom: 0.5px solid @border-color-base;
+          padding-bottom: 5px;
+          padding-top: 5px;
+        }
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    flex-flow: nowrap row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 55px;
+    border-top: 1px solid @border-color-base;
+    position: relative;
+    padding: 0 20px;
+    .pagination {
+      margin: 10px;
+    }
+  }
+}
