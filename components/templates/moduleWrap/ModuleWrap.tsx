@@ -1,6 +1,5 @@
 import { ApolloError } from "@apollo/client";
 import { Typography } from "antd";
-import clsx from "clsx";
 import React from "react";
 
 import { Loading, Message } from "../../shared";
@@ -8,16 +7,16 @@ import styles from "./module-wrap.module.less";
 
 interface IModuleWrap {
   title: string;
-  hatNode?: React.FC<{ className: string }>;
-  children: React.FC<{ className: string }>;
+  hatNode?: React.ReactNode;
+  children: React.ReactNode;
   loading?: boolean;
   error?: ApolloError;
 }
 
 const ModuleWrap: React.FC<IModuleWrap> = ({
   title,
-  children: Children,
-  hatNode: HatNode,
+  children,
+  hatNode,
   loading,
   error,
 }) => (
@@ -27,16 +26,10 @@ const ModuleWrap: React.FC<IModuleWrap> = ({
         {title}
       </Typography.Title>
 
-      {HatNode && (
-        <HatNode className={clsx(styles.hatNode, loading && "disabled")} />
-      )}
+      {hatNode && hatNode}
     </div>
     <div className={styles.childrenWrap}>
-      {error ? (
-        <Message type="error" size="medium" />
-      ) : (
-        <Children className={styles.children} />
-      )}
+      {error ? <Message type="error" size="medium" /> : children}
       {loading && (
         <div className={styles.loadingArea}>
           <Loading />

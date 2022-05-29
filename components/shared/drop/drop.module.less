@@ -1,0 +1,17 @@
+.drop {
+  width: 100%;
+  overflow: hidden;
+  transition: linear @animation-splice-time;
+  height: 0;
+  .content {
+    transition: linear @animation-splice-time;
+    transform: translate(0, -100%);
+  }
+}
+
+.dropped {
+  height: auto;
+  .content {
+    transform: translate(0, 0);
+  }
+}

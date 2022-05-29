@@ -5,6 +5,7 @@ export {
 } from "react-icons/cg";
 export { FaTemperatureLow as TemperatureIcon } from "react-icons/fa";
 export {
+  MdAdd as AddIcon,
   MdOutlineKeyboardArrowLeft as ArrowLeft,
   MdOutlineKeyboardArrowRight as ArrowRight,
   MdOutlineArrowUpward as ArrowStickRight,
@@ -13,9 +14,11 @@ export {
   MdOutlinePeopleAlt as EmployeesIcon,
   MdErrorOutline as ErrorIcon,
   MdPriorityHigh as ExclamationIcon, // !
+  MdOutlineFilterList as FilterIcon,
   MdOutlineInfo as InfoIcon,
   MdVerticalAlignBottom as PressureIcon,
-  MdRefresh as RefreshIcon,
+  MdCached as RefreshIcon,
+  MdSearch as SearchIcon,
   MdOutlineArrowDropUp as SortArrowDownIcon,
   MdOutlineArrowDropDown as SortArrowUpIcon,
   MdRemoveRedEye as VisibilityIcon,

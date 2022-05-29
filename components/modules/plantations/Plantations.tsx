@@ -1,4 +1,5 @@
 import { useQuery } from "@apollo/client";
+import { TFunction, useTranslation } from "next-i18next";
 import React, { useState } from "react";
 
 import { IPlantation, IRootData } from "../../../models/entity.model";
@@ -14,6 +15,7 @@ import { PLANTATIONS_LIST } from "../../../services/schemas/plantation.schema";
 import { formatNumber } from "../../../utils/valueFormate";
 import { ViewProvider } from "../../providers";
 import { ModuleWrap, Table } from "../../templates";
+import Hat from "./hat/Hat";
 
 interface IListQueryResult {
   getOrganizationPlantationList: {
@@ -35,32 +37,34 @@ interface IListQueryParams {
   search?: ISearch;
 }
 
-const tableHeader = [
+const getTableHeader = (t: TFunction) => [
   {
-    label: "Area ha",
+    label: `${t("plantation.area")} ${t(`units:ha`)}`,
     value: "areaSize",
     minWidth: 150,
   },
   {
-    label: "Name",
+    label: t("plantation.name"),
     value: "name",
   },
   {
-    label: "Region",
+    label: t("plantation.region"),
     value: "region",
     width: 700,
   },
 ];
 
 const Plantations = () => {
+  const { t } = useTranslation("organization");
   const [page, setPage] = useState(1);
   const [itemCountPerPage, setItemCountPerPage] = useState(10);
   const [sort, setSort] = useState<ISort>({
     field: "updatedAt",
     order: "DESC",
   });
+  const [search, setSearch] = useState<string>("");
 
-  const { data, loading, error } = useQuery<
+  const { data, loading, error, refetch } = useQuery<
     IListQueryResult,
     IRootData<IListQueryParams>
   >(PLANTATIONS_LIST, {
@@ -72,6 +76,9 @@ const Plantations = () => {
           itemCountPerPage,
         },
         sort,
+        search: {
+          value: search,
+        },
       },
     },
   });
@@ -82,6 +89,11 @@ const Plantations = () => {
     setItemCountPerPage(value);
   };
   const handleOnChangeSort = (value: ISort) => setSort(value);
+  const onSearchHandler = (value: string) => {
+    setPage(1);
+    setSearch(value);
+  };
+  const handleRefresh = () => refetch();
 
   return (
     <ViewProvider>
@@ -89,36 +101,34 @@ const Plantations = () => {
         error={error}
         title="Plantations"
         loading={loading}
-        hatNode={({ className }) => (
-          <div className={className}>
-            <h1>2</h1>
-          </div>
-        )}
+        hatNode={
+          <Hat
+            onRefresh={handleRefresh}
+            onSearch={onSearchHandler}
+            loading={loading}
+          />
+        }
       >
-        {({ className }) => (
-          <div className={className}>
-            {data && (
-              <Table
-                sort={sort}
-                pagination={{
-                  ...data.getOrganizationPlantationList.pagination,
-                  currentPage: page,
-                }}
-                data={data.getOrganizationPlantationList.data}
-                headerLabels={tableHeader}
-                onChangeCurrentPage={handleOnChangePage}
-                onChangeCountPerPage={handleOnChangeItemCountPerPage}
-                onChangeSort={handleOnChangeSort}
-                showItem={({ item }) => (
-                  <>
-                    <td>{formatNumber(item.areaSize)}</td>
-                    <td>{item.name}</td>
-                    <td>{item.region}</td>
-                  </>
-                )}
-              />
+        {data && (
+          <Table
+            sort={sort}
+            pagination={{
+              ...data.getOrganizationPlantationList.pagination,
+              currentPage: page,
+            }}
+            data={data.getOrganizationPlantationList.data}
+            headerLabels={getTableHeader(t)}
+            onChangeCurrentPage={handleOnChangePage}
+            onChangeCountPerPage={handleOnChangeItemCountPerPage}
+            onChangeSort={handleOnChangeSort}
+            showItem={({ item }) => (
+              <>
+                <td>{formatNumber(item.areaSize)}</td>
+                <td>{item.name}</td>
+                <td>{item.region}</td>
+              </>
             )}
-          </div>
+          />
         )}
       </ModuleWrap>
     </ViewProvider>

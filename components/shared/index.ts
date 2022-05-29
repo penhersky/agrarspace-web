@@ -1,3 +1,4 @@
+export { default as Drop } from "./drop/Drop";
 export { default as DynamicSvgImage } from "./image/DynamicSvg";
 export { default as Image } from "./image/Image";
 export { default as Loading } from "./loading/Loading";

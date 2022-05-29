@@ -1,0 +1,41 @@
+.actinsGroup {
+  display: flex;
+  flex-flow: nowrap row;
+  justify-content: center;
+  align-items: center;
+
+  .mainAction {
+    display: flex;
+    flex-flow: nowrap row;
+    & > svg {
+      margin-right: 10px;
+      fill: #fff;
+    }
+    margin-left: 10px;
+  }
+
+  .search {
+    margin-left: 10px;
+    span {
+      border: none;
+    }
+    button {
+      border: none;
+    }
+  }
+
+  .toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    border: none;
+    padding: 0 7px;
+  }
+
+  .toggled {
+    & > svg {
+      fill: #fff;
+    }
+  }
+}

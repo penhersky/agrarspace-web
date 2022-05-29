@@ -33,14 +33,14 @@ const AppHeader = () => {
             </Typography.Text>
           </div>
         </Link>
-        <Link href="/" passHref>
+        {/* <Link href="/" passHref> TODO: add in v1.3
           <div className={clsx(styles.link, "link")}>
             <LineChartIcon />
             <Typography.Text className={styles.text}>
               {t("globalStatistics")}
             </Typography.Text>
           </div>
-        </Link>
+        </Link> */}
       </div>
       <div className={styles.side}>
         {user || employee ? (

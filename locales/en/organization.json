@@ -4,5 +4,12 @@
     "hectaresAvailable": "Hectares available",
     "employeeCount": "Employees",
     "usedCultures": "Used cultures"
+  },
+
+  "plantation": {
+    "addPlantation": "Add Plantation",
+    "area": "Area",
+    "name": "Name",
+    "region": "Region"
   }
 }

@@ -8,16 +8,16 @@ import useOrganizationNavigator from "../../../hooks/organizationNavigator.hook"
 import {
   ArrowLeft,
   ArrowRight,
-  CalendarIcon,
+  // CalendarIcon,
   ContactUsIcon,
   DashboardIcon,
   EmployeesIcon,
   HelpIcon,
-  MapIcon,
+  // MapIcon,
   OrganizationIcon,
   PlantationIcon,
   PlantIcon,
-  WeatherIcon,
+  // WeatherIcon,
 } from "../../../utils/icons";
 import { Image } from "../../shared";
 import Item from "./Item";
@@ -83,14 +83,14 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             {t("plantations")}
           </Item>
 
-          <Item
+          {/* <Item TODO: add in v1.1
             Icon={({ className, size }) => (
               <MapIcon className={className} size={size} />
             )}
             to={createPath(OZ_PAGES.globalMap)}
           >
             {t("globalMap")}
-          </Item>
+          </Item> */}
           <Divider className={styles.divider} />
           <Item
             Icon={({ className, size }) => (
@@ -100,7 +100,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
           >
             {t("employee")}
           </Item>
-          <Divider className={styles.divider} />
+          {/* <Divider className={styles.divider} /> TODO: add in v1.2
           <Item
             Icon={({ className, size }) => (
               <CalendarIcon className={className} size={size} />
@@ -116,7 +116,7 @@ const Sidebar: React.FC<ISidebarProps> = ({ organization: { logo, name } }) => {
             to={createPath(OZ_PAGES.weather)}
           >
             {t("weather")}
-          </Item>
+          </Item> */}
           <Divider className={styles.divider} />
           <Item
             Icon={({ className, size }) => (
