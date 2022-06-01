@@ -39,7 +39,7 @@ interface IListQueryParams {
 
 const getTableHeader = (t: TFunction) => [
   {
-    label: `${t("plantation.area")} ${t(`units:ha`)}`,
+    label: t("plantation.area"),
     value: "areaSize",
     minWidth: 150,
   },
@@ -99,7 +99,7 @@ const Plantations = () => {
     <ViewProvider>
       <ModuleWrap
         error={error}
-        title="Plantations"
+        title={t("navigation:plantations")}
         loading={loading}
         hatNode={
           <Hat

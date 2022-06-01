@@ -1,6 +1,5 @@
 import { gql } from "@apollo/client";
 
-// eslint-disable-next-line import/prefer-default-export
 export const PLANTATIONS_LIST = gql`
   query GetOrganizationPlantationList($data: PlantationListArgs!) {
     getOrganizationPlantationList(data: $data) {
@@ -28,6 +27,14 @@ export const PLANTATIONS_LIST = gql`
           max
         }
       }
+    }
+  }
+`;
+
+export const CREATE_PLANTATION = gql`
+  mutation CreatePlantation($data: PlantationInput!) {
+    createPlantation(data: $data) {
+      id
     }
   }
 `;

@@ -8,8 +8,11 @@
 
   "plantation": {
     "addPlantation": "Add Plantation",
-    "area": "Area",
+    "createPlantation": "Create Plantation",
+    "area": "Area ha",
     "name": "Name",
-    "region": "Region"
+    "region": "Region",
+    "description": "Description",
+    "added": "Plantation added successful"
   }
 }

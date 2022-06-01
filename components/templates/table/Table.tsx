@@ -1,13 +1,13 @@
-/* eslint-disable no-unused-vars */
 import { Pagination, Radio, Typography } from "antd";
 import clsx from "clsx";
-import React, { useMemo } from "react";
+import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
 import { IPagination, ISort } from "../../../models/list.model";
 import { SortArrowDownIcon, SortArrowUpIcon } from "../../../utils/icons";
 import styles from "./table.module.less";
 
+/* eslint-disable no-unused-vars */
 interface ITableParams<T> {
   data: T[];
   headerLabels: {
@@ -24,6 +24,7 @@ interface ITableParams<T> {
   onChangeSort: (value: ISort) => void;
   className?: string;
 }
+/* eslint-unable no-unused-vars */
 
 const Table = <T extends { id: number }>({
   data,
@@ -111,14 +112,14 @@ const Table = <T extends { id: number }>({
           className={styles.radio}
           onChange={(e) => onChangeCountPerPage(e.target.value)}
         >
-          {pagination.totalItemCount > 10 && (
-            <Radio.Button value={10}>10</Radio.Button>
-          )}
-          {pagination.totalItemCount > 10 && (
+          {pagination.totalItemCount > 20 && (
             <Radio.Button value={20}>20</Radio.Button>
           )}
           {pagination.totalItemCount > 20 && (
             <Radio.Button value={40}>40</Radio.Button>
+          )}
+          {pagination.totalItemCount > 40 && (
+            <Radio.Button value={60}>60</Radio.Button>
           )}
         </Radio.Group>
       </div>
