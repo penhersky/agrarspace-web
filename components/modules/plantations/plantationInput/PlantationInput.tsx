@@ -56,7 +56,7 @@ const PlantationInput: React.FC<IFormProps> = ({
       },
     });
     setLoaded(true);
-    if (!data?.createPlantation.id && errors)
+    if (!data?.createPlantation?.id && errors)
       message.error(t("message:default:error:title"));
     if (data?.createPlantation.id) {
       message.success(t("plantation.added"));
@@ -77,14 +77,14 @@ const PlantationInput: React.FC<IFormProps> = ({
       <Form.Item
         name={["name"]}
         label={t("plantation.name")}
-        rules={[{ required: true }]}
+        rules={[{ required: true, max: 124, min: 4 }]}
       >
         <Input name="plantation-name" />
       </Form.Item>
       <Form.Item
         name={["region"]}
         label={t("plantation.region")}
-        rules={[{ required: true }]}
+        rules={[{ required: true, max: 256, min: 4 }]}
       >
         <Input name="plantation-region" />
       </Form.Item>
@@ -95,7 +95,11 @@ const PlantationInput: React.FC<IFormProps> = ({
       >
         <InputNumber name="plantation-area" step="0.1" />
       </Form.Item>
-      <Form.Item name={["description"]} label={t("plantation.description")}>
+      <Form.Item
+        name={["description"]}
+        label={t("plantation.description")}
+        rules={[{ required: false, max: 900 }]}
+      >
         <Input.TextArea name="plantation-description" />
       </Form.Item>
     </DedicatedForm>

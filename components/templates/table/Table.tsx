@@ -1,30 +1,16 @@
-import { Pagination, Radio, Typography } from "antd";
+import { Button, Pagination, Radio, Typography } from "antd";
 import clsx from "clsx";
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { IPagination, ISort } from "../../../models/list.model";
-import { SortArrowDownIcon, SortArrowUpIcon } from "../../../utils/icons";
+import {
+  DeleteIcon,
+  EditIcons,
+  SortArrowDownIcon,
+  SortArrowUpIcon,
+} from "../../../utils/icons";
+import { ITableParams } from "./table.model";
 import styles from "./table.module.less";
-
-/* eslint-disable no-unused-vars */
-interface ITableParams<T> {
-  data: T[];
-  headerLabels: {
-    label: string;
-    value: string;
-    minWidth?: number;
-    width?: number;
-  }[];
-  pagination: IPagination;
-  sort?: ISort;
-  showItem: React.FC<{ item: T }>;
-  onChangeCurrentPage: (value: number) => void;
-  onChangeCountPerPage: (value: number) => void;
-  onChangeSort: (value: ISort) => void;
-  className?: string;
-}
-/* eslint-unable no-unused-vars */
 
 const Table = <T extends { id: number }>({
   data,
@@ -36,6 +22,7 @@ const Table = <T extends { id: number }>({
   onChangeCurrentPage,
   onChangeSort,
   className,
+  actions,
 }: ITableParams<T>) => {
   const getArrow = (order: string) => {
     switch (order) {
@@ -87,6 +74,44 @@ const Table = <T extends { id: number }>({
           {data.map((value) => (
             <tr key={uuidv4()}>
               <Item item={value} />
+              <div
+                className={styles.itemActions}
+                style={{
+                  display:
+                    actions?.showEdit || actions?.showDelete
+                      ? "initial"
+                      : "none",
+                }}
+              >
+                {actions?.edition &&
+                  actions.edition.map((action) => (
+                    <Button
+                      className={styles.action}
+                      style={{ display: action.visible ? "initial" : "none" }}
+                      onClick={() => action.onClick(value)}
+                      type="text"
+                    >
+                      <action.Icon size={24} />
+                    </Button>
+                  ))}
+                <Button
+                  className={clsx(styles.action, styles.edit)}
+                  style={{ display: actions?.showEdit ? "initial" : "none" }}
+                  onClick={() => actions?.onEdit?.(value)}
+                  type="text"
+                >
+                  <EditIcons size={24} />
+                </Button>
+
+                <Button
+                  className={clsx(styles.action, styles.delete)}
+                  style={{ display: actions?.showDelete ? "initial" : "none" }}
+                  onClick={() => actions?.onDelete?.(value)}
+                  type="text"
+                >
+                  <DeleteIcon size={24} />
+                </Button>
+              </div>
             </tr>
           ))}
         </tbody>

@@ -2,40 +2,14 @@ import { useQuery } from "@apollo/client";
 import { TFunction, useTranslation } from "next-i18next";
 import React, { useState } from "react";
 
-import { IPlantation, IRootData } from "../../../models/entity.model";
-import {
-  IFilterInterval,
-  IPagination,
-  IPaginationInput,
-  ISearch,
-  ISelectItem,
-  ISort,
-} from "../../../models/list.model";
+import { IRootData } from "../../../models/entity.model";
+import { ISort } from "../../../models/list.model";
 import { PLANTATIONS_LIST } from "../../../services/schemas/plantation.schema";
 import { formatNumber } from "../../../utils/valueFormate";
 import { ViewProvider } from "../../providers";
 import { ModuleWrap, Table } from "../../templates";
 import Hat from "./hat/Hat";
-
-interface IListQueryResult {
-  getOrganizationPlantationList: {
-    data: IPlantation[];
-    pagination: IPagination;
-    option: {
-      statuses: ISelectItem[];
-      areaSize: IFilterInterval;
-    };
-  };
-}
-
-interface IListQueryParams {
-  filter?: {
-    areaSize: IFilterInterval;
-  };
-  sort: ISort;
-  pagination: IPaginationInput;
-  search?: ISearch;
-}
+import { IListQueryParams, IListQueryResult } from "./plantation.model";
 
 const getTableHeader = (t: TFunction) => [
   {
@@ -46,6 +20,7 @@ const getTableHeader = (t: TFunction) => [
   {
     label: t("plantation.name"),
     value: "name",
+    minWidth: 150,
   },
   {
     label: t("plantation.region"),
@@ -57,7 +32,7 @@ const getTableHeader = (t: TFunction) => [
 const Plantations = () => {
   const { t } = useTranslation("organization");
   const [page, setPage] = useState(1);
-  const [itemCountPerPage, setItemCountPerPage] = useState(10);
+  const [itemCountPerPage, setItemCountPerPage] = useState(20);
   const [sort, setSort] = useState<ISort>({
     field: "updatedAt",
     order: "DESC",
@@ -95,6 +70,9 @@ const Plantations = () => {
   };
   const handleRefresh = () => refetch();
 
+  const handleOnDelete = () => {};
+  const handleOnEdit = () => {};
+
   return (
     <ViewProvider>
       <ModuleWrap
@@ -128,6 +106,12 @@ const Plantations = () => {
                 <td>{item.region}</td>
               </>
             )}
+            actions={{
+              showDelete: true,
+              showEdit: true,
+              onDelete: handleOnDelete,
+              onEdit: handleOnEdit,
+            }}
           />
         )}
       </ModuleWrap>

@@ -47,8 +47,13 @@
       tr {
         transition: linear @global-hover-time;
         cursor: pointer;
+        overflow: visible;
+        position: relative;
         &:hover {
           background-color: @global-hover-table-color;
+          .itemActions {
+            transform: translate(-2px, 0);
+          }
         }
         td {
           padding-left: 20px;
@@ -57,6 +62,50 @@
           border-bottom: 0.5px solid @border-color-base;
           padding-bottom: 5px;
           padding-top: 5px;
+        }
+
+        .itemActions {
+          position: absolute;
+          overflow: hidden;
+          transform: translate(calc(105%), 0);
+          right: -2px;
+          top: 1px;
+          height: calc(100% - 1px);
+          transition: linear @global-hover-time;
+          background-color: @local-background;
+          border-radius: 10px 0 0 10px;
+          border-left: 4px @border-color-base solid;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-flow: nowrap row;
+
+          .action {
+            width: 60px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: linear @global-hover-time;
+            margin-left: 5px;
+            margin: 0;
+            background-color: @local-background;
+            &:hover {
+              background-color: @global-hover-color;
+              svg {
+                opacity: 0.9;
+              }
+            }
+          }
+
+          .delete {
+            svg {
+              fill: @error-color;
+            }
+            &:hover {
+              background-color: @error-color-opacity;
+            }
+          }
         }
       }
     }

@@ -10,7 +10,9 @@ export {
   MdOutlineKeyboardArrowRight as ArrowRight,
   MdOutlineArrowUpward as ArrowStickRight,
   MdCloud as CloudsIcon,
+  MdDelete as DeleteIcon,
   MdOutlineDone as DoneIcon,
+  MdModeEdit as EditIcons,
   MdOutlinePeopleAlt as EmployeesIcon,
   MdErrorOutline as ErrorIcon,
   MdPriorityHigh as ExclamationIcon, // !
