@@ -38,3 +38,11 @@ export const CREATE_PLANTATION = gql`
     }
   }
 `;
+
+export const DELETE_PLANTATION = gql`
+  mutation DeletePlantation($deletePlantationId: ID!) {
+    deletePlantation(id: $deletePlantationId) {
+      id
+    }
+  }
+`;

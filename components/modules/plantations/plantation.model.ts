@@ -27,3 +27,13 @@ export interface IListQueryParams {
   pagination: IPaginationInput;
   search?: ISearch;
 }
+
+export interface IDeleteResult {
+  deletePlantation: {
+    id: number;
+  };
+}
+
+export interface IDeleteParams {
+  deletePlantationId: number;
+}

@@ -122,6 +122,7 @@ const Table = <T extends { id: number }>({
           current={pagination.currentPage}
           disabled={pagination.itemCountPerPage > pagination.totalItemCount}
           total={pagination.totalItemCount}
+          pageSize={pagination.itemCountPerPage}
           className={styles.pagination}
           showSizeChanger={false}
           style={{

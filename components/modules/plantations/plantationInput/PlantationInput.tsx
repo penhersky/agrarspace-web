@@ -58,7 +58,7 @@ const PlantationInput: React.FC<IFormProps> = ({
     setLoaded(true);
     if (!data?.createPlantation?.id && errors)
       message.error(t("message:default:error:title"));
-    if (data?.createPlantation.id) {
+    if (data?.createPlantation?.id) {
       message.success(t("plantation.added"));
       refreshForm();
       onRefresh();

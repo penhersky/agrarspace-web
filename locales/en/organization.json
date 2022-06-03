@@ -13,6 +13,7 @@
     "name": "Name",
     "region": "Region",
     "description": "Description",
-    "added": "Plantation added successful"
+    "added": "Plantation added successful",
+    "deleted": "Plantation deleted successful"
   }
 }

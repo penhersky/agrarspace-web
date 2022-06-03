@@ -1,33 +1,15 @@
 import { useQuery } from "@apollo/client";
-import { TFunction, useTranslation } from "next-i18next";
+import { useTranslation } from "next-i18next";
 import React, { useState } from "react";
 
 import { IRootData } from "../../../models/entity.model";
 import { ISort } from "../../../models/list.model";
 import { PLANTATIONS_LIST } from "../../../services/schemas/plantation.schema";
-import { formatNumber } from "../../../utils/valueFormate";
 import { ViewProvider } from "../../providers";
-import { ModuleWrap, Table } from "../../templates";
+import { ModuleWrap } from "../../templates";
 import Hat from "./hat/Hat";
+import PlantationsList from "./list/PlantationList";
 import { IListQueryParams, IListQueryResult } from "./plantation.model";
-
-const getTableHeader = (t: TFunction) => [
-  {
-    label: t("plantation.area"),
-    value: "areaSize",
-    minWidth: 150,
-  },
-  {
-    label: t("plantation.name"),
-    value: "name",
-    minWidth: 150,
-  },
-  {
-    label: t("plantation.region"),
-    value: "region",
-    width: 700,
-  },
-];
 
 const Plantations = () => {
   const { t } = useTranslation("organization");
@@ -70,9 +52,6 @@ const Plantations = () => {
   };
   const handleRefresh = () => refetch();
 
-  const handleOnDelete = () => {};
-  const handleOnEdit = () => {};
-
   return (
     <ViewProvider>
       <ModuleWrap
@@ -88,30 +67,17 @@ const Plantations = () => {
         }
       >
         {data && (
-          <Table
+          <PlantationsList
             sort={sort}
+            onRefresh={handleRefresh}
             pagination={{
               ...data.getOrganizationPlantationList.pagination,
               currentPage: page,
             }}
-            data={data.getOrganizationPlantationList.data}
-            headerLabels={getTableHeader(t)}
+            dataSet={data.getOrganizationPlantationList.data}
             onChangeCurrentPage={handleOnChangePage}
             onChangeCountPerPage={handleOnChangeItemCountPerPage}
             onChangeSort={handleOnChangeSort}
-            showItem={({ item }) => (
-              <>
-                <td>{formatNumber(item.areaSize)}</td>
-                <td>{item.name}</td>
-                <td>{item.region}</td>
-              </>
-            )}
-            actions={{
-              showDelete: true,
-              showEdit: true,
-              onDelete: handleOnDelete,
-              onEdit: handleOnEdit,
-            }}
           />
         )}
       </ModuleWrap>

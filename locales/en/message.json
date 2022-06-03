@@ -17,6 +17,10 @@
     "error": {
       "title": "Oops... Something went wrong",
       "description": "Try again or reload window"
+    },
+    "delete": {
+      "title": "Are you really sure in this operation?",
+      "description": "This action may not be reversible!"
     }
   }
 }
